@@ -1,0 +1,30 @@
+{
+  "name": "node-dns-sd",
+  "version": "0.0.1",
+  "description": "The node-dns-sd is a Node.js module which is a pure javascript implementation of mDNS/DNS-SD (Apple Bonjour) browser and packet parser. It allows you to discover IPv4 addresses in the local network specifying a service name such as `_http._tcp.local`. Besides, it allows you to monitor mDNS/DNS-SD packets.",
+  "main": "./lib/dns-sd.js",
+  "files": [
+    "lib"
+  ],
+  "directories": {
+    "lib": "./lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "DNS-SD",
+    "mDNS",
+    "DNS-Based Service Discovery",
+    "Multicast DNS",
+    "Bonjour"
+  ],
+  "homepage": "https://github.com/futomi",
+  "author": "Futomi Hatano <futomi.hatano@gmail.com> (https://github.com/futomi)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/futomi/node-dns-sd.git"
+  },
+  "readmeFilename": "README.md"
+}
