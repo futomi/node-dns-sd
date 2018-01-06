@@ -488,7 +488,7 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
-* v0.1.1 (2018-01-06)
+* v0.1.2 (2018-01-06)
   * Fixed a bug that an exeption was thrown if the `filter` was specified to the `discover()` method.
 * v0.1.0 (2018-01-06)
   * Added the parameter `quick` and `filter` to the [`discover()`](#DnsSd-discover-method) method.
