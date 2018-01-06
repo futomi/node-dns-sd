@@ -202,9 +202,12 @@ Property | Type    | Required | Description
 :--------|:--------|:---------|:-------------------------
 `name`   | String  | Required | Service name.(e.g., `"_googlecast._tcp.local"`)
 `wait`   | Integer | Optional | Duration of monitoring (sec). The default value is 3 sec.
+`quick`  | Boolean | Optional | If `true`, this method returns immediately after a device was found ignoring the value of the `wait`. The default value is `false`.
+`filter` | String  | Optional | If specified, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
 
 Basically you don't need to pass the `wait` property to this method. In most cases, the default value `3` (sec) works well.
 
+The code blow would find Google devices (Google Home, Google TV, etc.):
 
 ```JavaScript
 mDnsSd.discover({
@@ -246,8 +249,6 @@ The code above will output the result as follows:
   }
 ]
 ```
-
-The code above would find Google devices (Google Home, Google TV, etc.) and Apple TVs.
 
 The `discover()` method will pass a information list of the found devices to the callback function. Each device information in the list contains the properties as follows:
 
@@ -487,6 +488,9 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.1.0 (2018-01-06)
+  * Added the parameter `quick` and `filter` to the [`discover()`](#DnsSd-discover-method) method.
+  * Fixed a bug that a UDP socket was not closed properly.
 * v0.0.1 (2018-01-05)
   * First public release
 
