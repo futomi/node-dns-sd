@@ -203,7 +203,8 @@ Property | Type    | Required | Description
 `name`   | String  | Required | Service name.(e.g., `"_googlecast._tcp.local"`)
 `wait`   | Integer | Optional | Duration of monitoring (sec). The default value is 3 sec.
 `quick`  | Boolean | Optional | If `true`, this method returns immediately after a device was found ignoring the value of the `wait`. The default value is `false`.
-`filter` | String  | Optional | If specified, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
+`filter` | String  | Optional | If a string is specified to the `filter`, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
++        | Function | Optional | If a function is specified to the `filter`, this method discovers only devices for which the function returns `true`. See the sample code below for details.
 
 Basically you don't need to pass the `wait` property to this method. In most cases, the default value `3` (sec) works well.
 
@@ -249,6 +250,38 @@ The code above will output the result as follows:
   }
 ]
 ```
+
+A string is set to the `filter` parameter, this method limits to devices whose `fqdn`, `address`, `modelName` or `familyName` includes the string.
+
+```javascript
+mDnsSd.discover({
+  name: '_googlecast._tcp.local',
+  filter: 'Google Home',
+  quick: true
+}).then((device_list) =>{
+  console.log(JSON.stringify(device_list, null, '  '));
+}).catch((error) => {
+  console.error(error);
+});
+```
+
+A function is set to the `filter` parameter, this method limits to devices for which the function returns `true`. The function must return `true` or `false`.
+
+```javascript
+mDnsSd.discover({
+  name: '_googlecast._tcp.local',
+  filter: (devcie) => {
+    return (device['modelName'] === 'Google Home' && /Living room/.test(device['familyName']));
+  },
+  quick: true
+}).then((device_list) =>{
+  console.log(JSON.stringify(device_list, null, '  '));
+}).catch((error) => {
+  console.error(error);
+});
+```
+
+As you can see from the code above, an object representing a found device is passed to the function. You can evaluate the device information and limit to devices you want.
 
 The `discover()` method will pass a information list of the found devices to the callback function. Each device information in the list contains the properties as follows:
 
@@ -488,6 +521,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.2.0 (2018-08-02)
+  * Supported a function-based filtering mechanism in the [`discover()`](#DnsSd-discover-method) method. Now you can specify your custom filter as a function to the `filter` paramter of the `discover()` method. (thanks to [@dayflower](https://github.com/futomi/node-dns-sd/issues/2))
 * v0.1.2 (2018-01-06)
   * Fixed a bug that an exeption was thrown if the `filter` was specified to the `discover()` method.
 * v0.1.0 (2018-01-06)
