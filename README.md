@@ -204,7 +204,7 @@ Property | Type    | Required | Description
 `wait`   | Integer | Optional | Duration of monitoring (sec). The default value is 3 sec.
 `quick`  | Boolean | Optional | If `true`, this method returns immediately after a device was found ignoring the value of the `wait`. The default value is `false`.
 `filter` | String  | Optional | If a string is specified to the `filter`, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
-+        | Function | Optional | If a function is specified to the `filter`, this method discovers only devices for which the function returns `true`. See the sample code below for details.
+`filter` | Function | Optional | If a function is specified to the `filter`, this method discovers only devices for which the function returns `true`. See the sample code below for details.
 
 Basically you don't need to pass the `wait` property to this method. In most cases, the default value `3` (sec) works well.
 
