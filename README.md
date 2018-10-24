@@ -206,6 +206,8 @@ Property | Type    | Required | Description
 `filter` | String  | Optional | If a string is specified to the `filter`, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
 `filter` | Function | Optional | If a function is specified to the `filter`, this method discovers only devices for which the function returns `true`. See the sample code below for details.
 
+If you want to discover all services (devices) in the local netowrk, you can set the `name` property to `_services._dns-sd._udp.local'`.
+
 Basically you don't need to pass the `wait` property to this method. In most cases, the default value `3` (sec) works well.
 
 The code blow would find Google devices (Google Home, Google TV, etc.):
@@ -521,6 +523,9 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.2.1 (2018-10-24)
+  * Improved the device discovery. In this version, all available IPv4 network interfaces are joined to a multicast group, so that all devices in the local network are sure to be discovered.
+  * Fixed a bug that some event listeners did not be removed when the discovery process is finished.
 * v0.2.0 (2018-08-02)
   * Supported a function-based filtering mechanism in the [`discover()`](#DnsSd-discover-method) method. Now you can specify your custom filter as a function to the `filter` paramter of the `discover()` method. (thanks to [@dayflower](https://github.com/futomi/node-dns-sd/issues/2))
 * v0.1.2 (2018-01-06)
