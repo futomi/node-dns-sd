@@ -201,12 +201,32 @@ This method takes a hash object containing the properties as follows:
 Property | Type    | Required | Description
 :--------|:--------|:---------|:-------------------------
 `name`   | String  | Required | Service name.(e.g., `"_googlecast._tcp.local"`)
+`type`   | String  | Optional | Query Type (e.g., `"PTR"`). The default value is `"*"`.
+`key`    | String  | Optional | This value must be `"address"` (default) or `"fqdn"`. This property indicates how to fold multiple DNS-SD query responses. See the description below for details.
 `wait`   | Integer | Optional | Duration of monitoring (sec). The default value is 3 sec.
 `quick`  | Boolean | Optional | If `true`, this method returns immediately after a device was found ignoring the value of the `wait`. The default value is `false`.
 `filter` | String  | Optional | If a string is specified to the `filter`, this method discovers only devices which the specified string is found in the `fqdn`, `address`, `modelName` or `familyName`.
 `filter` | Function | Optional | If a function is specified to the `filter`, this method discovers only devices for which the function returns `true`. See the sample code below for details.
 
-If you want to discover all services (devices) in the local netowrk, you can set the `name` property to `_services._dns-sd._udp.local'`.
+If you want to discover all services in the local netowrk, you can set the `name` property to `_services._dns-sd._udp.local'`.
+
+```javascript
+mDnsSd.discover({
+  name: '_services._dns-sd._udp.local',
+  type: 'PTR',
+  key: 'fqdn'
+}).then((device_list) =>{
+  console.log(JSON.stringify(device_list, null, '  '));
+}).catch((error) => {
+  console.error(error);
+});
+```
+
+The `type` property indicates the query type, such as `"PTR"`. This value must be a (Q)TYPE value defined in the [RFC 1035](https://tools.ietf.org/html/rfc1035) and [RFC 2782](https://tools.ietf.org/html/rfc2782). If this property is not specified, the wildcard `"*"` will be applied.
+
+The `key` property indicates how to fold multiple DNS-SD query responses. If the value is set to `"address"` or this property is not specified, the last response form an IP address will be reported. If you want to discover IP addresses rather than services, this mode is appropriate.
+
+If the value of the `key` property is set to `"fqdn"`, responses will be folded by each FQDN. In this mode, multiple responses with the same IP address could be included. If you want to discover services rather than IP address, this mode is appropriate.
 
 Basically you don't need to pass the `wait` property to this method. In most cases, the default value `3` (sec) works well.
 
@@ -523,6 +543,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.3.0 (2018-10-25)
+  * Added the `key` and `type` parameters to the [`discover()`](#DnsSd-discover-method) method.
 * v0.2.1 (2018-10-24)
   * Improved the device discovery. In this version, all available IPv4 network interfaces are joined to a multicast group, so that all devices in the local network are sure to be discovered.
   * Fixed a bug that some event listeners did not be removed when the discovery process is finished.
