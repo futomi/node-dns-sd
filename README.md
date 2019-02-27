@@ -510,6 +510,20 @@ The `DnsSdPacket` object represents a mDNS/DNS-SD packet. It is a hash object co
         "bs": "FA8F00000000",
         "nf": "1",
         "rs": ""
+      },
+      "rdata_buffer": {
+        "id": {Buffer object},
+        "cd": {Buffer object},
+        "rm": {Buffer object},
+        "ve": {Buffer object},
+        "md": {Buffer object},
+        "ic": {Buffer object},
+        "fn": {Buffer object},
+        "ca": {Buffer object},
+        "st": {Buffer object},
+        "bs": {Buffer object},
+        "nf": {Buffer object},
+        "rs": {Buffer object}
       }
     },
     {
@@ -538,11 +552,15 @@ The `DnsSdPacket` object represents a mDNS/DNS-SD packet. It is a hash object co
 }
 ```
 
+Note that the `rdata_buffer` property is added only if the type is `"TXT"`. Each value in the `rdata_buffer` is a `Buffer` object. Some devices set a binary data to each value. You can parse the binary data using this property.
+
 See the section "[References](#References)" for more details.
 
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.4.0 (2019-02-24)
+  * Added the `rdata_buffer` property in the [`DnsSdPacket`](#DnsSdPacket-object) object.
 * v0.3.0 (2018-10-25)
   * Added the `key` and `type` parameters to the [`discover()`](#DnsSd-discover-method) method.
 * v0.2.1 (2018-10-24)
