@@ -559,6 +559,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.4.1 (2020-04-09)
+  * Fix of address already in use on udp.addMembership method (thanks to [@SlyAndrew](https://github.com/futomi/node-dns-sd/pull/5))
 * v0.4.0 (2019-02-24)
   * Added the `rdata_buffer` property in the [`DnsSdPacket`](#DnsSdPacket-object) object.
 * v0.3.0 (2018-10-25)
@@ -589,7 +591,7 @@ See the section "[References](#References)" for more details.
 
 The MIT License (MIT)
 
-Copyright (c) 2018 Futomi Hatano
+Copyright (c) 2018-2020 Futomi Hatano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
