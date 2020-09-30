@@ -559,6 +559,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v0.4.2 (2020-09-30)
+  * Catch dropMembership error (thanks to [@bwp91])(https://github.com/futomi/node-dns-sd/pull/6)
 * v0.4.1 (2020-04-09)
   * Fix of address already in use on udp.addMembership method (thanks to [@SlyAndrew](https://github.com/futomi/node-dns-sd/pull/5))
 * v0.4.0 (2019-02-24)
