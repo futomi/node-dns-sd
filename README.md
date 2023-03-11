@@ -7,8 +7,8 @@ This module focuses on discovering IPv4 addresses from a service name. It is not
 
 ## Dependencies
 
-* [Node.js](https://nodejs.org/en/) 4 +
-  * Though the node-dns-sd works on Node 4 for now, it is strongly recommended to use Node 6 or newer. The node-dns-sd will not support Node 4 in the future.
+* [Node.js](https://nodejs.org/en/) 18 +
+  * Though the node-dns-sd works on older version of Node for now, it is strongly recommended to use the latest version of Node.
 
 ## Installation
 
@@ -559,26 +559,29 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v1.0.0 (2023-03-11)
+    * Rewrote all codes in modern coding style using `class`, `async`, `await`, etc.
+    * Supported multi-homed environment.
 * v0.4.2 (2020-09-30)
-  * Catch dropMembership error (thanks to [@bwp91](https://github.com/futomi/node-dns-sd/pull/6))
+    * Catch dropMembership error (thanks to [@bwp91](https://github.com/futomi/node-dns-sd/pull/6))
 * v0.4.1 (2020-04-09)
-  * Fix of address already in use on udp.addMembership method (thanks to [@SlyAndrew](https://github.com/futomi/node-dns-sd/pull/5))
+    * Fix of address already in use on udp.addMembership method (thanks to [@SlyAndrew](https://github.com/futomi/node-dns-sd/pull/5))
 * v0.4.0 (2019-02-24)
-  * Added the `rdata_buffer` property in the [`DnsSdPacket`](#DnsSdPacket-object) object.
+    * Added the `rdata_buffer` property in the [`DnsSdPacket`](#DnsSdPacket-object) object.
 * v0.3.0 (2018-10-25)
-  * Added the `key` and `type` parameters to the [`discover()`](#DnsSd-discover-method) method.
+    * Added the `key` and `type` parameters to the [`discover()`](#DnsSd-discover-method) method.
 * v0.2.1 (2018-10-24)
-  * Improved the device discovery. In this version, all available IPv4 network interfaces are joined to a multicast group, so that all devices in the local network are sure to be discovered.
-  * Fixed a bug that some event listeners did not be removed when the discovery process is finished.
+    * Improved the device discovery. In this version, all available IPv4 network interfaces are joined to a multicast group, so that all devices in the local network are sure to be discovered.
+    * Fixed a bug that some event listeners did not be removed when the discovery process is finished.
 * v0.2.0 (2018-08-02)
-  * Supported a function-based filtering mechanism in the [`discover()`](#DnsSd-discover-method) method. Now you can specify your custom filter as a function to the `filter` paramter of the `discover()` method. (thanks to [@dayflower](https://github.com/futomi/node-dns-sd/issues/2))
+    * Supported a function-based filtering mechanism in the [`discover()`](#DnsSd-discover-method) method. Now you can specify your custom filter as a function to the `filter` paramter of the `discover()` method. (thanks to [@dayflower](https://github.com/futomi/node-dns-sd/issues/2))
 * v0.1.2 (2018-01-06)
-  * Fixed a bug that an exeption was thrown if the `filter` was specified to the `discover()` method.
+    * Fixed a bug that an exeption was thrown if the `filter` was specified to the `discover()` method.
 * v0.1.0 (2018-01-06)
-  * Added the parameter `quick` and `filter` to the [`discover()`](#DnsSd-discover-method) method.
-  * Fixed a bug that a UDP socket was not closed properly.
+    * Added the parameter `quick` and `filter` to the [`discover()`](#DnsSd-discover-method) method.
+    * Fixed a bug that a UDP socket was not closed properly.
 * v0.0.1 (2018-01-05)
-  * First public release
+    * First public release
 
 ---------------------------------------
 ## <a id="References">References</a>
@@ -593,7 +596,7 @@ See the section "[References](#References)" for more details.
 
 The MIT License (MIT)
 
-Copyright (c) 2018-2020 Futomi Hatano
+Copyright (c) 2018-2023 Futomi Hatano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
