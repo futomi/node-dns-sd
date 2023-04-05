@@ -559,6 +559,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v1.0.1 (2023-04-05)
+    * Fixed the constant variable issue (thanks to [@cybercode](https://github.com/futomi/node-dns-sd/issues/11))
 * v1.0.0 (2023-03-11)
     * Rewrote all codes in modern coding style using `class`, `async`, `await`, etc.
     * Supported multi-homed environment.
