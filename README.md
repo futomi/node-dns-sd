@@ -559,6 +559,8 @@ See the section "[References](#References)" for more details.
 ---------------------------------------
 ## <a id="Release-Note">Release Note</a>
 
+* v1.0.2 (2026-09-10)
+    * Fixed a bug that the [`discover()`](#DnsSd-discover-method) method could start a new discovery process while the previous one was still setting up or cleaning up the UDP socket. (thanks to [@andreypopov](https://github.com/futomi/node-dns-sd/pull/14))
 * v1.0.1 (2023-04-05)
     * Fixed the constant variable issue (thanks to [@cybercode](https://github.com/futomi/node-dns-sd/issues/11))
 * v1.0.0 (2023-03-11)
